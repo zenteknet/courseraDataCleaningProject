@@ -2,7 +2,7 @@
 
 The purpose of this repo and the R script run_analysis.R is to fulfill the project requirement for the Coursera Data Cleaning Project. As such very little attention was paid to the actual data and its meaning since the purpose of the project was to show facility at cleaning up data and reshaping it. 
 
-Quick Start. Fork repo to computer. In R set the working directory to the new forked directory. Load the script run_analysis.R and run line by line to see how it works. If the working directory is set right, run_analysis so have the data it needs. 
+Quick Start. Fork repo to computer. In R set the working directory to the new forked directory. Load the script run_analysis.R and run line by line to see how it works. If the working directory is set right, run_analysis should have the data files it needs. 
 
 The underlying data has to do with recognizing what activity a human is doing given smartphone gyroscopic data. Its purpose
 is probably to facilitate a machine learning approach which would map the gyro data to the human activity allowing a predictive model. This will undoubtably help the NSA in its continuing efforts to monitor literally our every move, if not our every bowel movement. (The study didn't try to track that. Probably Apple is working on it, and luckily there is still some doubt whether they are backdoored to the NSA. Forgive the pun.)
