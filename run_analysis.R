@@ -16,13 +16,14 @@
 ## 1. Merges the training and the test sets to create one data set.
 
         ## Read in features.txt, a list of features that will be column headers
-        features = read.table("features.txt", sep="")       # These features represent the column headers in the tidy data
-                                                            # frame that is being created
+        features = read.table("features.txt", sep="")       # These features represent the column headers in the tidy data frame that is being created
+        features_valid_names = make.names(features$V2, unique=TRUE, allow_=TRUE)   # Create vector of unique column names for future merge
+
         ## Read in data tables
 
         # Read in Training data and insert subject data into first column & insert independent variable Activity into second column
         X_train = read.table("X_train.txt", sep="")
-        names(X_train) = features$V2                        # Set column headers to features list
+        names(X_train) = features_valid_names               # Set column headers to valid features list
         X_train = tbl_df(X_train)                           # Convert data frame to table for use with dplyr
 
         y_train = read.table("y_train.txt")
@@ -39,7 +40,7 @@
 
         # Read in Test data and insert subject data into first column & insert independent variable Activity into second column
         X_test = read.table("X_test.txt", sep="")
-        names(X_test) = features$V2                         # Set column headers to features list
+        names(X_test) = features_valid_names                # Set column headers to features list
         X_test = tbl_df(X_test)                             # Convert data frame to table for use with dplyr
 
         y_test = read.table("y_test.txt")
@@ -55,7 +56,7 @@
         Xy_test = bind_cols(subject_test,Xy_test)           # add subject column to X_test
 
         ## Merge the Training and Test dataset
-        Xy_datamerge = bind_rows(Xy_train,Xy_test)          # Combine the training and test data sets
+        Xy_datamerge = rbind(Xy_train,Xy_test)          # Combine the training and test data sets
 
 ## 2. Extracts only the measurements on the mean and standard deviation for each measurement.
         Xy_dataset = select(Xy_datamerge,contains("subject"), contains("activity"), contains("mean"), contains("std"))
@@ -68,7 +69,7 @@
 
 ## 4. Appropriately labels the data set with descriptive variable names.
 #     In the first section, I replaced the V3...Vx variables with the corresponding features from the feature list.
-#     I am leaving the current column names because they have obviously been well thought out.
+#     I am leaving the current column names after they have been rendered unique, because they have obviously been well thought out.
 #     For example: tBodyGyroJerk-mean()-Z means "mean of time domain Body Gyroscopic Jerk along the Z axis.
 #     When there is a "f" that means an FFT transform has put it in the frequency domain. (See features_info.txt included in the repo)
 
@@ -86,6 +87,7 @@
         activity_subject_means = dcast(Xy_melt, activity+subject~variable, mean) # This is probably the answer wanted by the project question #5
 
         # Write table to txt file called tidyData.txt with comma delimitation
-        write.table(activity_subject_means, "tidyData", row.names=FALSE, sep=",")
+        write.table(activity_subject_means, "tidyData.txt", row.names=FALSE, sep=",")
+        cat("tidyData.txt has been saved to the working directory:", getwd())   # Message that tidyData saved to disk
 
 ## End of file
