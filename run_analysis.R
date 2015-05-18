@@ -1,4 +1,4 @@
-%% run_analysis.R does the following.
+## run_analysis.R does the following:
 # 1. Merges the training and the test sets to create one data set.
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 # 3. Uses descriptive activity names to name the activities in the data set
@@ -72,8 +72,9 @@
 #     For example: tBodyGyroJerk-mean()-Z means "mean of time domain Body Gyroscopic Jerk along the Z axis.
 #     When there is a "f" that means an FFT transform has put it in the frequency domain. (See features_info.txt included in the repo)
 
-       columnNames = colnames(Xy_dataset)                                # Prints the current column names for inspection
-       write.table(columnNames, "columnNames.txt", quote=FALSE)
+       # columnNames = colnames(Xy_dataset)                                # Prints the current column names for inspection
+       #  write.table(columnNames, "columnNames.txt", quote=FALSE)
+
 ## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable
 #     for each activity and each subject.
 
