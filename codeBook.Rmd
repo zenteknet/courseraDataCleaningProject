@@ -12,8 +12,8 @@ The R script "run_analysis.R"" reads in the original training and test data file
 
 1.1 The specific column names for this data set are:
 
-- 1 subject
-- 2 activity
+- 1 subject  Note: Subjects participating in experiment are labeled 1,2...
+- 2 activity Note: Activities are: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
 - 3 tBodyAcc-mean()-X
 - 4 tBodyAcc-mean()-Y
 - 5 tBodyAcc-mean()-Z
