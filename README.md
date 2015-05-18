@@ -14,11 +14,11 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 The working script is run_analysis.R which is heavily commented to help understand what it is doing. A short summary would be that 
 run_analysis.R :
 
-        1. Merges the training and the test sets to create one data set.
+        1. Merges the training and the test sets to create one data set and labels the data set with descriptive names provided         by the data collector.
         2. Extracts only the measurements on the mean and standard deviation for each measurement. 
         3. Uses descriptive activity names to name the activities in the data set
-        4. Appropriately labels the data set with descriptive variable names. 
-        5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and   each subject.
+        4. Appropriately labels the data set with descriptive variable names. (Done in step 1.)
+        5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each             activity and each subject.
 
 A couple of notes: To complete 2., the script searches for any column name with mean or std in it, and assumes that is what is wanted for the tidy data set in step 5. Step 4. is actually handled in Step 2, as I decided to create a tidy data set of all the data and then subset the complete data set instead of subsetting the dirty data and then cleaning up the subsetted dirty data. This is more general and hence probably a good idea since the Xy_dataset is tidy and ready for further use.
 
